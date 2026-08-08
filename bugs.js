@@ -52,8 +52,8 @@ function createBug() {
 	bugImgElement.setAttribute("height", 50)
 	const bugNumber = Math.floor(Math.random() * bugImages.length)
 	bugImgElement.src = bugImages[bugNumber];
-	bugImgElement.alt = "bug " + bugNumber
-	bug.id = "bug-" + bugNumber;
+	bugImgElement.alt = "bug " + (bugNumber+1)
+	bug.id = "bug-" + (bugNumber+1)
 	
 	const bugTop = Math.floor(Math.random() * bugTopMax) + bugTopMin;
 	const bugLeft = Math.floor(Math.random() * bugLeftMax) + bugLeftMin;
@@ -80,8 +80,8 @@ function createBug() {
 	function moveBug(bug) {
 		if(bugMoveSpeedCurrent < bugMoveSpeedMax) bugMoveSpeedCurrent += bugMoveSpeedAcceleration;
 		if(bugTargetFound) newBugTarget();
-		bugNewLeft = Number(bug.style.left.slice(0, -2))
-		bugNewTop = Number(bug.style.top.slice(0, -2))
+		bugNewLeft = Number(bug.style.left.slice(0, -1))
+		bugNewTop = Number(bug.style.top.slice(0, -1))
 		if(!bugTargetFound) {
 			if(bugNewLeft < bugTargetX) {
 				bugNewLeft = bugNewLeft + bugMoveSpeedCurrent;
