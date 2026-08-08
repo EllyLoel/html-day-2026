@@ -80,6 +80,11 @@ button {
 
 	& .border {
 		border: 2px solid var(--accent);
+		position: relative;
+
+		& .bugs button {
+			position: absolute;
+		}
 	}
 
 	& .artboard {
