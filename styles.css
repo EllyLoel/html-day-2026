@@ -21,9 +21,8 @@ button {
 
 	align-items: center;
 	background: var(--_bg);
-	border: var(--border-size-2) solid var(--_border);
-	border-radius: var(--radius-2);
-	box-shadow: var(--shadow-2), 0 0 0 var(--_highlight-size) var(--_highlight);
+	border: 2px solid var(--_border);
+	border-radius: 1px;
 	color: var(--_text);
 	display: inline-flex;
 	font-size: var(--_size);
@@ -32,7 +31,6 @@ button {
 	line-height: 1;
 	padding-block: var(--block-size-2);
 	padding-inline: var(--inline-size-3);
-	-webkit-tap-highlight-color: transparent;
 	text-align: center;
 
 	& > svg:not([data-icon="false"]) {
@@ -48,8 +46,8 @@ button {
 
 	&:has(svg:not([data-icon="false"]) + .visually-hidden),
 	&:has(.visually-hidden + svg:not([data-icon="false"])) {
-		padding-block: var(--size-px-1);
-		padding-inline: var(--size-px-1);
+		padding-block: 1px;
+		padding-inline: 1px;
 	}
 }
 
