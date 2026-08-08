@@ -83,10 +83,11 @@ button {
 		position: relative;
 
 		& .bugs button {
+			--_bg: transparent;
 			position: absolute;
 			padding: 0;
 			border: none;
-			--_bg: transparent;
+			cursor: crosshair;
 		}
 	}
 

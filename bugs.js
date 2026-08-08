@@ -1,13 +1,23 @@
 const bugs = document.querySelectorAll(`[id^="bug-"`);
 
 for (const bug of bugs) {
-	
+	bug.addEventListener('click', () => {
+		bug.toggleAttribute('hidden');
+		startSpawnBugTimer();
+	});
 }
 
-window.setTimeout(() => {
+const spawnBug = () => {
 	const bug = document.querySelector(`#bug-${Math.floor(Math.random() * 7)}`);
 	bug.removeAttribute('hidden');
-}, Math.floor(Math.random() * 5000));
+	createBug();
+};
+
+const startSpawnBugTimer = () => window.setTimeout(spawnBug, Math.floor(Math.random() * 5000));
+
+addEventListener('DOMContentLoaded', (event) => {
+	startSpawnBugTimer();
+})
 
 const bugImages = [
 	"bugs/bug1.png",
@@ -123,7 +133,3 @@ function createBug() {
 		return (degrees + 360) % 360;
 	}
 }
-
-createBug()
-createBug()
-createBug()
