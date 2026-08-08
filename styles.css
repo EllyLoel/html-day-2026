@@ -1,0 +1,103 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: system-ui, sans-serif;
+}
+
+button {
+	--hue: 140deg;
+	--_accent: oklch(56.98% 0.2365 var(--hue));
+	--_text: var(--_accent);
+	--_size: initial;
+	--_bg: oklch(18.09% 0.0105 var(--hue));
+	--_border: currentcolor;
+	--_highlight-size: 0;
+	--_highlight: var(--_accent);
+	--_icon-size: 2ch;
+	--_icon-color: var(--_accent);
+
+	align-items: center;
+	background: var(--_bg);
+	border: var(--border-size-2) solid var(--_border);
+	border-radius: var(--radius-2);
+	box-shadow: var(--shadow-2), 0 0 0 var(--_highlight-size) var(--_highlight);
+	color: var(--_text);
+	display: inline-flex;
+	font-size: var(--_size);
+	gap: var(--block-size-2) var(--inline-size-2);
+	justify-content: center;
+	line-height: 1;
+	padding-block: var(--block-size-2);
+	padding-inline: var(--inline-size-3);
+	-webkit-tap-highlight-color: transparent;
+	text-align: center;
+
+	& > svg:not([data-icon="false"]) {
+		block-size: var(--_icon-size);
+		flex-shrink: 0;
+		inline-size: var(--_icon-size);
+
+		& > * {
+			stroke: var(--_icon-color);
+			stroke-width: var(--border-size-2);
+		}
+	}
+
+	&:has(svg:not([data-icon="false"]) + .visually-hidden),
+	&:has(.visually-hidden + svg:not([data-icon="false"])) {
+		padding-block: var(--size-px-1);
+		padding-inline: var(--size-px-1);
+	}
+}
+
+.scribbler {
+	& #controls {
+		> div {
+			--flow-space: 0.5em;
+		}
+
+		& button {
+			gap: var(--block-size-1) var(--inline-size-1);
+			padding-block: var(--block-size-1);
+			padding-inline: var(--inline-size-2);
+
+			&[aria-pressed="true"] {
+				background: var(--_text);
+				color: var(--_bg);
+			}
+
+			&[id="clear"]:is(:hover, :focus-visible) {
+				--_accent: oklch(56.6% 0.1372 32deg);
+			}
+
+			& circle {
+				stroke: none;
+			}
+		}
+	}
+
+	& .artboard {
+		filter: contrast(75%) brightness(130%);
+
+		@media (prefers-color-scheme: dark) {
+			filter: invert(100%) contrast(80%) brightness(90%);
+		}
+	}
+
+	& canvas {
+		background: white;
+		filter: contrast(100000%); /* lol i can't believe this works */
+		image-rendering: pixelated;
+		inline-size: 100%;
+
+		&:not([data-tool]), &[data-tool="pencil"] {
+			cursor: url("data:image/webp;base64,UklGRgQBAABXRUJQVlA4TPcAAAAvHgAHEIegJpKt5gcVvyPWGMggCV1IQAjdV4EWBW0kqbljVPBn4ElNZDtRJk4uA5eA1HGAFExQ4QMXyKGmnP8AACw4fRcf0X7WmLjVreVj2Ws4c4kdj7+Rk+FNNWVocBBJkiJV7+4x+ne7dNcPAiL6z8Bt20aC1Nv7XgEAAAAAgCQJwO44jkN+a6bRrtBqbl2fdFq0rvPca7Qsmueiz5iptid832kZx87yzt87N42dKSWjSqPMTk2Nw5C3em1btjYMblX5VZRS3vpJ0zTlr/DHOf/Oh933cwYveVOpz+O6LrVZ1PZddvEuFUomoZY/r19Qu8aj3+YCAA==") 0 29, pointer;
+		}
+
+		&[data-tool="eraser"] {
+			cursor: url("data:image/webp;base64,UklGRv4AAABXRUJQVlA4TPIAAAAvHgAHEIegJpKt5gcVvyPWGMggCV1IQAjdV4EWBW0kqbljVPBn4ElNZDtRJk4uA5eA1HGAFExQ4QMXyKGmnP8AACw4fRcf0X7WmLjVreVj2Ws4c4kdj7+Rk+FNNWVocNi2kSPZm/Nu/93Gv1ngC4joPwO3bRsZZm/vewUAAAAAAAAAAAAAknzappSmeE0ppcv5Qx8zQjNbH2Ke3GbEcia5Ipdz5qM9fdL4qDX+s8850pgX1lrSP7HOzcq3brsyxhjSHc1CIQSeEW1lCFcjv9Va690Y51f4ztEjUZa7KXETN6W0/52nXqT7/CQ74SLvfOlSAA==") 8 29, pointer;
+		}
+	}
+}
