@@ -1,23 +1,23 @@
-const bugs = document.querySelectorAll(`[id^="bug-"`);
+// const bugs = document.querySelectorAll(`[id^="bug-"`);
 
-for (const bug of bugs) {
-	bug.addEventListener('click', () => {
-		bug.toggleAttribute('hidden');
-		startSpawnBugTimer();
-	});
-}
+// for (const bug of bugs) {
+// 	bug.addEventListener('click', () => {
+// 		// bug.toggleAttribute('hidden');
+// 		startSpawnBugTimer();
+// 	});
+// }
 
-const spawnBug = () => {
-	const bug = document.querySelector(`#bug-${Math.floor(Math.random() * 7)}`);
-	bug.removeAttribute('hidden');
-	createBug();
-};
+// const spawnBug = () => {
+// 	const bug = document.querySelector(`#bug-${Math.floor(Math.random() * 7)}`);
+// 	bug.removeAttribute('hidden');
+// 	createBug();
+// };
 
-const startSpawnBugTimer = () => window.setTimeout(spawnBug, Math.floor(Math.random() * 5000));
+const startSpawnBugTimer = () => window.setTimeout(createBug, Math.floor(Math.random() * 5000));
 
-addEventListener('DOMContentLoaded', (event) => {
-	startSpawnBugTimer();
-})
+// addEventListener('DOMContentLoaded', (event) => {
+// 	startSpawnBugTimer();
+// })
 
 const bugImages = [
 	"bugs/bug1.png",
@@ -50,14 +50,18 @@ function createBug() {
 	const bugImgElement = document.createElement("img")
 	bugImgElement.setAttribute("width", 50)
 	bugImgElement.setAttribute("height", 50)
-	bugImgElement.src = bugImages[Math.floor(Math.random() * bugImages.length)];
+	const bugNumber = Math.floor(Math.random() * bugImages.length)
+	bugImgElement.src = bugImages[bugNumber];
+	bugImgElement.alt = "bug " + bugNumber
+	bug.id = "bug-" + bugNumber;
 	
 	const bugTop = Math.floor(Math.random() * bugTopMax) + bugTopMin;
 	const bugLeft = Math.floor(Math.random() * bugLeftMax) + bugLeftMin;
 	const bugSize = Math.floor(Math.random() * bugSizeMax) + bugSizeMin;
 
 	bug.addEventListener('click', () => {
-		bug.toggleAttribute('hidden');
+		bug.remove()
+		startSpawnBugTimer();
 	});
 
 	const bugMoveSpeedMax = 1
@@ -133,3 +137,5 @@ function createBug() {
 		return (degrees + 360) % 360;
 	}
 }
+
+createBug();
