@@ -84,6 +84,9 @@ button {
 
 		& .bugs button {
 			position: absolute;
+			padding: 0;
+			border: none;
+			--_bg: transparent;
 		}
 	}
 
