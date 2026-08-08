@@ -80,4 +80,8 @@
 	--size-content-1: 14rem;
 	--size-content-2: 30rem;
 	--size-content-3: 37rem;
+
+	/* colours */
+	--hue: 140deg;
+	--accent: oklch(56.98% 0.2365 var(--hue));
 }

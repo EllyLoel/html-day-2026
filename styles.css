@@ -8,8 +8,7 @@ html {
 }
 
 button {
-	--hue: 140deg;
-	--_accent: oklch(56.98% 0.2365 var(--hue));
+	--_accent: var(--accent);
 	--_text: var(--_accent);
 	--_size: initial;
 	--_bg: oklch(18.09% 0.0105 var(--hue));
@@ -75,6 +74,10 @@ button {
 				stroke: none;
 			}
 		}
+	}
+
+	& .border {
+		border: 2px solid var(--accent);
 	}
 
 	& .artboard {
