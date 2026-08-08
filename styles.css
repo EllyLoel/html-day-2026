@@ -2,6 +2,8 @@
 	box-sizing: border-box;
 }
 
+[hidden]:not([hidden="until-found"]) { display: none }
+
 html {
 	color-scheme: light dark;
 	font-family: system-ui, sans-serif;
